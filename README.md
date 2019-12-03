@@ -1,4 +1,4 @@
-# watch-us-build-trello
+#mercy vuejs-project
 
 ## Project setup
 ```
