@@ -1,5 +1,4 @@
 <template>
- 
  <transition appear @before-enter="beforeEnter" @enter="enter" :css="false">
   <AppDrop
     @drop="moveTaskOrColumn"

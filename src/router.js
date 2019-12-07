@@ -55,7 +55,7 @@ const router = new Router({
             next()
           })
           .catch(error => {
-            if (error.response && error.response.status == 404) {
+            if (error.response && error.response.status === 404) {
               next({ name: '404', params: { resource: 'task' } })
             } else {
               next({ name: 'network-issue' })

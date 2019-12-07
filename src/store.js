@@ -8,21 +8,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    board: defaultBoard
-  },
-
-  getters: { // <-- Add a getter
-    getTask (state) {
-      return (id) => {
-        for (const column of state.board.columns) {
-          for (const task of column.tasks) {
-            if (task.id === id) {
-              return task
-            }
-          }
-        }
-      }
-    }
+    board: defaultBoard,
+    customer: {}
   },
   mutations: {
     SET_USER_DATA (state, userData) {
@@ -33,6 +20,9 @@ export default new Vuex.Store({
     CLEAR_USER_DATA () {
       localStorage.removeItem('user')
       location.reload()
+    },
+    SET_TASK (state, customer) {
+      state.customer = customer
     },
     CREATE_TASK (state, { tasks, name }) {
       tasks.push({
@@ -86,24 +76,45 @@ export default new Vuex.Store({
 
     fetchCustomer ({ commit, state }, id) {
       const onlyColumns = state.board.columns
-      // console.log(onlyColumns)
+      // // eslint-disable-next-line no-undef
+      // var customer = getters.getEventById(id)
+      // if (customer) {
+      //   commit('SET_TASK', customer)
+      // } else {
+
+      // }
+
+      console.log(onlyColumns)
       onlyColumns.map(el => {
-        el.tasks.forEach(el =>{
+        el.tasks.forEach(el => {
           if (el.id === id) {
-            const task = el
-            return task
+            const customer = el
+            commit('SET_TASK', customer)
           }
         })
-        
       })
     }
   },
 
-  // eslint-disable-next-line no-dupe-keys
-  getters: {
+  getters: { // <-- Add a getter
+    getTask (state) {
+      return (id) => {
+        for (const column of state.board.columns) {
+          for (const task of column.tasks) {
+            if (task.id === id) {
+              return task
+            }
+          }
+        }
+      }
+    },
     loggedIn (state) {
       return !!state.user
+    },
+
+    // Исправить ! - не работает
+    getEventById: state => id => {
+      return state.board.find(customer => customer.id === id)
     }
   }
-
 })

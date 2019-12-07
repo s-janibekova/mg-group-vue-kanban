@@ -1,20 +1,20 @@
 <template>
     <div>
-            tsssssssss
-            {{task}}
-    </div>
+            {{ customer }}
+            </div>
 </template>
 
 <script>
-    export default {
-    props: {
-    task: {
-      type: Object,
-      required: true
-    }
+import { mapState } from 'vuex'
+export default {
+  props: ['id'],
+  mounted () {
+    this.$store.dispatch('fetchCustomer', this.$route.params.id)
+  },
+  computed: {
+    ...mapState(['customer'])
   }
-    }
-
+}
 
 </script>
 

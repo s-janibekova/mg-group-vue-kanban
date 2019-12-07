@@ -1,13 +1,13 @@
-  
+
 <template>
   <div>
-  
+
   </div>
 </template>
 <script>
 import { mapState } from 'vuex'
 export default {
-  async fetch({ store, error, params }) {
+  async fetch ({ store, error, params }) {
     try {
       await store.dispatch('fetchCustomer', params.id)
     } catch (e) {
@@ -19,7 +19,11 @@ export default {
   },
   computed: mapState({
     task: state => state.board
-    
-  })
+
+  }),
+
+  mounted () {
+    return console.log(this.task)
+  }
 }
 </script>

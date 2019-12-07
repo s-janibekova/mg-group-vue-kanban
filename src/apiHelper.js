@@ -12,5 +12,9 @@ const apiClient = axios.create({
 export default {
   getEmployees () {
     return apiClient.get('/employees')
+  },
+
+  getCustomer () {
+    return apiClient.get('/customers/:id')
   }
 }
