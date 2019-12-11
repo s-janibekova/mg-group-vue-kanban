@@ -80,32 +80,16 @@ export default new Vuex.Store({
     },
 
     fetchCustomer ({ commit }, id) {
+      console.log('id', id)
       // const onlyColumns = state.board.columns
       apiClient.getCustomer(id)
         .then(res => {
           const data = res.data
-          const result = data.find(x => x.id)
-          console.log(result)
+          const result = data.find(x => x.id === id)
+          console.log(result, 'data')
           // eslint-disable-next-line no-undef
           commit('SET_CUSTOMER', result)
         })
-      // // eslint-disable-next-line no-undef
-      // var customer = getters.getEventById(id)
-      // if (customer) {
-      //   commit('SET_TASK', customer)
-      // } else {
-
-      // }
-
-      // console.log(onlyColumns)
-      // onlyColumns.map(el => {
-      //   el.tasks.forEach(el => {
-      //     if (el.id === id) {
-      //       const customer = el
-      //       commit('SET_TASK', customer)
-      //     }
-      // })
-      // })
     }
   },
 

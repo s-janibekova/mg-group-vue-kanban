@@ -23,7 +23,7 @@
       >
         {{ task.description }}
       </p>
-      <router-link class="button" :to="{ name: 'customer-show', params: { id: task.id } }" :task="task">Подробнее</router-link>
+      <router-link class="button" :to="{ name: 'customer-show', params: { id: task.id } }" :task="task" >Подробнее</router-link>
     </AppDrag>
   </AppDrop>
  </transition>
@@ -52,6 +52,7 @@ export default {
   methods: {
     goToTask (task) {
       this.$router.push({ name: 'task', params: { id: task.id } })
+      console.log(params, 'sdfsdfsdf')
     },
     beforeEnter (el) {
       el.style.opacity = 0
