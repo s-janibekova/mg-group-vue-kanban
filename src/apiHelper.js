@@ -14,7 +14,7 @@ export default {
     return apiClient.get('/employees')
   },
 
-  getCustomer () {
-    return apiClient.get('/customers/:id')
+  getCustomer (id) {
+    return apiClient.get('/customers/', id)
   }
 }

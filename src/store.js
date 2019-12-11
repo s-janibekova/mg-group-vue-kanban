@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import defaultBoard from './default-board'
 import { uuid } from './utils'
+import apiClient from './apiHelper.js'
 
 Vue.use(Vuex)
 
@@ -52,6 +53,10 @@ export default new Vuex.Store({
       const columnList = state.board.columns
       const columnToMove = columnList.splice(fromColumnIndex, 1)[0]
       columnList.splice(toColumnIndex, 0, columnToMove)
+    },
+    SET_CUSTOMER (state, el) {
+      console.log(el)
+      state.customer = el
     }
 
   },
@@ -74,8 +79,16 @@ export default new Vuex.Store({
       commit('CLEAR_USER_DATA')
     },
 
-    fetchCustomer ({ commit, state }, id) {
-      const onlyColumns = state.board.columns
+    fetchCustomer ({ commit }, id) {
+      // const onlyColumns = state.board.columns
+      apiClient.getCustomer(id)
+        .then(res => {
+          const data = res.data
+          const result = data.find(x => x.id)
+          console.log(result)
+          // eslint-disable-next-line no-undef
+          commit('SET_CUSTOMER', result)
+        })
       // // eslint-disable-next-line no-undef
       // var customer = getters.getEventById(id)
       // if (customer) {
@@ -84,15 +97,15 @@ export default new Vuex.Store({
 
       // }
 
-      console.log(onlyColumns)
-      onlyColumns.map(el => {
-        el.tasks.forEach(el => {
-          if (el.id === id) {
-            const customer = el
-            commit('SET_TASK', customer)
-          }
-        })
-      })
+      // console.log(onlyColumns)
+      // onlyColumns.map(el => {
+      //   el.tasks.forEach(el => {
+      //     if (el.id === id) {
+      //       const customer = el
+      //       commit('SET_TASK', customer)
+      //     }
+      // })
+      // })
     }
   },
 

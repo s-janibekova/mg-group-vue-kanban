@@ -1,6 +1,10 @@
 <template>
     <div>
-            {{ customer }}
+            <div class="customer-header">
+              <span class="eyebrow">Вид помощи {{customer.helpType}}
+              </span>
+              <h1 class="title"> ФИО</h1>
+            </div>
             </div>
 </template>
 
@@ -18,6 +22,24 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+   .location {
+      margin-bottom: 0;
+    }
+    .location > .icon {
+      margin-left: 10px;
+    }
+    .customer-header > .title {
+      margin: 0;
+    }
+    .list-group {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list-group > .list-item {
+      padding: 1em 0;
+      border-bottom: solid 1px #e5e5e5;
+    }
 
 </style>
