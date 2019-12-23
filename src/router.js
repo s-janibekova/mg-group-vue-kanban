@@ -18,7 +18,7 @@ const router = new Router({
       path: '/board',
       name: 'board',
       component: Board,
-      meta: { requiresAuth: true },
+      // meta: { requiresAuth: true },
       children: [
         {
           path: '/task/:id',
