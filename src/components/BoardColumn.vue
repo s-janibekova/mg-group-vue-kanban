@@ -32,7 +32,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
             ФИО
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nick" type="text">   
+          <input v-model="firstName" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nick" type="text">
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-6">
@@ -40,7 +40,7 @@
           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
             ИИН
           </label>
-          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nick" type="text">   
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="nick" type="text">
         </div>
       </div>
       <div class="flex flex-wrap -mx-3 mb-6">
@@ -57,26 +57,17 @@
             Описание
           </label>
           <textarea class=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="message"></textarea>
-          <p class="text-gray-600 text-xs italic">Re-size can be disabled by set by resize-none / resize-y / resize-x / resize</p>
-        </div>
+               </div>
       </div>
       <div class="md:flex md:items-center submit-btn">
         <div class="md:w-1/3">
-          <button class="shadow bg-indigo hover:bg-blue focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+          <button  @click="createTask($event, column.tasks)" class="shadow bg-indigo hover:bg-blue focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
             Send
           </button>
         </div>
         <div class="md:w-2/3"></div>
       </div>
 </form>
-
-
-
-
-
-
-
-
           </div>
 
         <input
@@ -99,7 +90,8 @@ import movingTasksAndColumnsMixin from '@/mixins/movingTasksAndColumnsMixin'
 export default {
   data () {
     return {
-      hide: false
+      hide: false,
+      firstname: ''
     }
   },
   components: {
@@ -119,6 +111,7 @@ export default {
     createTask (e, tasks) {
       this.$store.commit('CREATE_TASK', {
         tasks,
+        // здесь будет объект который будет отправлять форму о customer
         name: e.target.value
       })
       e.target.value = ''
@@ -144,6 +137,4 @@ form {
   border: solid 1px;
   cursor: pointer;
 }
-
-
 </style>

@@ -25,6 +25,7 @@ export default new Vuex.Store({
     SET_TASK (state, customer) {
       state.customer = customer
     },
+    // здесь нужно принять объект и обновить state
     CREATE_TASK (state, { tasks, name }) {
       tasks.push({
         name,
