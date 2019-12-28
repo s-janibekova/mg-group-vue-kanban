@@ -52,7 +52,7 @@ export default {
   methods: {
     goToTask (task) {
       this.$router.push({ name: 'task', params: { id: task.id } })
-      console.log(params, 'sdfsdfsdf')
+      // console.log(params, 'sdfsdfsdf')
     },
     beforeEnter (el) {
       el.style.opacity = 0
