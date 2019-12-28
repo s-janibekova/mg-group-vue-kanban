@@ -8,4 +8,3 @@ export default {
 
 }
 </script>
-© 2019 GitHub, Inc.

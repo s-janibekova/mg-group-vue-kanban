@@ -6,7 +6,11 @@ const board = {
   _columns: [
     {
       name: 'необработаные',
-      tasks: []
+      tasks: [
+        {
+          'firstName': 'Saltanat',
+          'lastName': 'Janybekova'
+        }]
     },
     {
       name: 'В процессе',

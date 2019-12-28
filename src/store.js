@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import defaultBoard from './default-board'
-import { uuid } from './utils'
+// import { uuid } from './utils'
 import apiClient from './apiHelper.js'
 
 Vue.use(Vuex)
@@ -26,12 +26,14 @@ export default new Vuex.Store({
       state.customer = customer
     },
     // здесь нужно принять объект и обновить state
-    CREATE_TASK (state, { tasks, name }) {
+    // eslint-disable-next-line standard/object-curly-even-spacing
+    CREATE_TASK (state, [newTask, tasks]) {
       tasks.push({
-        name,
-        id: uuid(),
-        description: ''
+        'firstName': newTask.firstName,
+        'lastName': newTask.firstName
       })
+
+      console.log(tasks, newTask)
     },
 
     CREATE_COLUMN (state, { name }) {
